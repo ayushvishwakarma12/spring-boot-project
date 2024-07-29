@@ -1,52 +1,74 @@
 package com.example.codingpractice.model;
 
-
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import jakarta.persistence.*;
 
+import java.util.List;
 import java.util.UUID;
 
 @Entity
 @Table(name = "managers")
+@JsonPropertyOrder({
+        "manager_id",
+        "full_name",
+        "is_active"
+})
 public class Manager {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private UUID manager_id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id")
+    @JsonProperty("manager_id")
+    private UUID managerId;
 
     @Column(name = "full_name")
-    private String full_name;
+    @JsonProperty("full_name")
+    private String fullName;
 
     @Column(name = "is_active")
-    private String is_active;
+    @JsonProperty("is_active")
+    private boolean isActive;
+
+    @OneToMany(mappedBy = "manager")
+    private List<User> users;
 
     public Manager() {}
 
-    public Manager(UUID manager_id, String full_name, String is_active) {
-        this.manager_id = manager_id;
-        this.full_name = full_name;
-        this.is_active = is_active;
+    public Manager(UUID managerId, String fullName, boolean isActive) {
+        this.managerId = managerId;
+        this.fullName = fullName;
+        this.isActive = isActive;
     }
 
-    public UUID getManager_id() {
-        return manager_id;
+    public UUID getManagerId() {
+        return managerId;
     }
 
-    public void setManager_id(UUID manager_id) {
-        this.manager_id = manager_id;
+    public void setManagerId(UUID managerId) {
+        this.managerId = managerId;
     }
 
-    public String getFull_name() {
-        return full_name;
+    public String getFullName() {
+        return fullName;
     }
 
-    public void setFull_name(String full_name) {
-        this.full_name = full_name;
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
     }
 
-    public String getIs_active() {
-        return is_active;
+    public boolean getIsActive() {
+        return isActive;
     }
 
-    public void setIs_active(String is_active) {
-        this.is_active = is_active;
+    public void setIsActive(boolean isActive) {
+        this.isActive = isActive;
+    }
+
+    public List<User> getUsers() {
+        return users;
+    }
+
+    public void setUsers(List<User> users) {
+        this.users = users;
     }
 }

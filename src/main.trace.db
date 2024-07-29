@@ -1845,3 +1845,449 @@ Caused by: org.h2.mvstore.MVStoreException: The file is locked: D:/nxtWave/codin
 	at org.h2.mvstore.SingleFileStore.open(SingleFileStore.java:81)
 	at org.h2.mvstore.MVStore.<init>(MVStore.java:286)
 	... 54 more
+2024-07-26 12:02:37.284191+05:30 database: flush
+org.h2.message.DbException: General error: "org.h2.mvstore.MVStoreException: The file is locked: D:/nxtWave/codingpractice/codingpractice/src/main.mv.db [2.2.224/7]" [50000-224]
+	at org.h2.message.DbException.get(DbException.java:212)
+	at org.h2.message.DbException.convert(DbException.java:407)
+	at org.h2.mvstore.db.Store.lambda$new$0(Store.java:122)
+	at org.h2.mvstore.MVStore.handleException(MVStore.java:1546)
+	at org.h2.mvstore.MVStore.panic(MVStore.java:371)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:291)
+	at org.h2.mvstore.MVStore$Builder.open(MVStore.java:2035)
+	at org.h2.mvstore.db.Store.<init>(Store.java:133)
+	at org.h2.engine.Database.<init>(Database.java:326)
+	at org.h2.engine.Engine.openSession(Engine.java:92)
+	at org.h2.engine.Engine.openSession(Engine.java:222)
+	at org.h2.engine.Engine.createSession(Engine.java:201)
+	at org.h2.engine.SessionRemote.connectEmbeddedOrServer(SessionRemote.java:343)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:125)
+	at org.h2.Driver.connect(Driver.java:59)
+	at com.zaxxer.hikari.util.DriverDataSource.getConnection(DriverDataSource.java:120)
+	at com.zaxxer.hikari.pool.PoolBase.newConnection(PoolBase.java:360)
+	at com.zaxxer.hikari.pool.PoolBase.newPoolEntry(PoolBase.java:202)
+	at com.zaxxer.hikari.pool.HikariPool.createPoolEntry(HikariPool.java:461)
+	at com.zaxxer.hikari.pool.HikariPool.checkFailFast(HikariPool.java:550)
+	at com.zaxxer.hikari.pool.HikariPool.<init>(HikariPool.java:98)
+	at com.zaxxer.hikari.HikariDataSource.getConnection(HikariDataSource.java:111)
+	at org.springframework.boot.autoconfigure.h2.H2ConsoleAutoConfiguration.getConnectionUrl(H2ConsoleAutoConfiguration.java:94)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:212)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
+	at java.base/java.util.stream.SortedOps$RefSortingSink.end(SortedOps.java:395)
+	at java.base/java.util.stream.Sink$ChainedReference.end(Sink.java:261)
+	at java.base/java.util.stream.Sink$ChainedReference.end(Sink.java:261)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:557)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:546)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:622)
+	at java.base/java.util.stream.AbstractPipeline.evaluateToArrayNode(AbstractPipeline.java:291)
+	at java.base/java.util.stream.ReferencePipeline.toArray(ReferencePipeline.java:631)
+	at java.base/java.util.stream.ReferencePipeline.toArray(ReferencePipeline.java:637)
+	at java.base/java.util.stream.ReferencePipeline.toList(ReferencePipeline.java:642)
+	at org.springframework.boot.autoconfigure.h2.H2ConsoleAutoConfiguration.logDataSources(H2ConsoleAutoConfiguration.java:86)
+	at org.springframework.boot.autoconfigure.h2.H2ConsoleAutoConfiguration.lambda$h2Console$0(H2ConsoleAutoConfiguration.java:69)
+	at org.springframework.boot.autoconfigure.h2.H2ConsoleAutoConfiguration.withThreadContextClassLoader(H2ConsoleAutoConfiguration.java:78)
+	at org.springframework.boot.autoconfigure.h2.H2ConsoleAutoConfiguration.h2Console(H2ConsoleAutoConfiguration.java:69)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:146)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:644)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:636)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1355)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1185)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:562)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:205)
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.getOrderedBeansOfType(ServletContextInitializerBeans.java:211)
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.getOrderedBeansOfType(ServletContextInitializerBeans.java:202)
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.addServletContextInitializerBeans(ServletContextInitializerBeans.java:97)
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.<init>(ServletContextInitializerBeans.java:86)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.getServletContextInitializerBeans(ServletWebServerApplicationContext.java:266)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.selfInitialize(ServletWebServerApplicationContext.java:240)
+	at org.springframework.boot.web.embedded.tomcat.TomcatStarter.onStartup(TomcatStarter.java:52)
+	at org.apache.catalina.core.StandardContext.startInternal(StandardContext.java:4414)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1203)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1193)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+	at org.apache.tomcat.util.threads.InlineExecutorService.execute(InlineExecutorService.java:75)
+	at java.base/java.util.concurrent.AbstractExecutorService.submit(AbstractExecutorService.java:145)
+	at org.apache.catalina.core.ContainerBase.startInternal(ContainerBase.java:749)
+	at org.apache.catalina.core.StandardHost.startInternal(StandardHost.java:772)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1203)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1193)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+	at org.apache.tomcat.util.threads.InlineExecutorService.execute(InlineExecutorService.java:75)
+	at java.base/java.util.concurrent.AbstractExecutorService.submit(AbstractExecutorService.java:145)
+	at org.apache.catalina.core.ContainerBase.startInternal(ContainerBase.java:749)
+	at org.apache.catalina.core.StandardEngine.startInternal(StandardEngine.java:203)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+	at org.apache.catalina.core.StandardService.startInternal(StandardService.java:415)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+	at org.apache.catalina.core.StandardServer.startInternal(StandardServer.java:874)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164)
+	at org.apache.catalina.startup.Tomcat.start(Tomcat.java:437)
+	at org.springframework.boot.web.embedded.tomcat.TomcatWebServer.initialize(TomcatWebServer.java:128)
+	at org.springframework.boot.web.embedded.tomcat.TomcatWebServer.<init>(TomcatWebServer.java:107)
+	at org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory.getTomcatWebServer(TomcatServletWebServerFactory.java:516)
+	at org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory.getWebServer(TomcatServletWebServerFactory.java:222)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.createWebServer(ServletWebServerApplicationContext.java:188)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.onRefresh(ServletWebServerApplicationContext.java:162)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:619)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:335)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1363)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1352)
+	at com.example.codingpractice.CodingpracticeApplication.main(CodingpracticeApplication.java:10)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientException: General error: "org.h2.mvstore.MVStoreException: The file is locked: D:/nxtWave/codingpractice/codingpractice/src/main.mv.db [2.2.224/7]" [50000-224]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:566)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	... 96 more
+Caused by: org.h2.mvstore.MVStoreException: The file is locked: D:/nxtWave/codingpractice/codingpractice/src/main.mv.db [2.2.224/7]
+	at org.h2.mvstore.DataUtils.newMVStoreException(DataUtils.java:996)
+	at org.h2.mvstore.SingleFileStore.lockFileChannel(SingleFileStore.java:143)
+	at org.h2.mvstore.SingleFileStore.open(SingleFileStore.java:117)
+	at org.h2.mvstore.SingleFileStore.open(SingleFileStore.java:81)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:286)
+	... 90 more
+2024-07-26 12:02:38.412282+05:30 database: flush
+org.h2.message.DbException: General error: "org.h2.mvstore.MVStoreException: The file is locked: D:/nxtWave/codingpractice/codingpractice/src/main.mv.db [2.2.224/7]" [50000-224]
+	at org.h2.message.DbException.get(DbException.java:212)
+	at org.h2.message.DbException.convert(DbException.java:407)
+	at org.h2.mvstore.db.Store.lambda$new$0(Store.java:122)
+	at org.h2.mvstore.MVStore.handleException(MVStore.java:1546)
+	at org.h2.mvstore.MVStore.panic(MVStore.java:371)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:291)
+	at org.h2.mvstore.MVStore$Builder.open(MVStore.java:2035)
+	at org.h2.mvstore.db.Store.<init>(Store.java:133)
+	at org.h2.engine.Database.<init>(Database.java:326)
+	at org.h2.engine.Engine.openSession(Engine.java:92)
+	at org.h2.engine.Engine.openSession(Engine.java:222)
+	at org.h2.engine.Engine.createSession(Engine.java:201)
+	at org.h2.engine.SessionRemote.connectEmbeddedOrServer(SessionRemote.java:343)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:125)
+	at org.h2.Driver.connect(Driver.java:59)
+	at com.zaxxer.hikari.util.DriverDataSource.getConnection(DriverDataSource.java:120)
+	at com.zaxxer.hikari.pool.PoolBase.newConnection(PoolBase.java:360)
+	at com.zaxxer.hikari.pool.PoolBase.newPoolEntry(PoolBase.java:202)
+	at com.zaxxer.hikari.pool.HikariPool.createPoolEntry(HikariPool.java:461)
+	at com.zaxxer.hikari.pool.HikariPool.checkFailFast(HikariPool.java:550)
+	at com.zaxxer.hikari.pool.HikariPool.<init>(HikariPool.java:98)
+	at com.zaxxer.hikari.HikariDataSource.getConnection(HikariDataSource.java:111)
+	at org.springframework.jdbc.datasource.DataSourceUtils.fetchConnection(DataSourceUtils.java:160)
+	at org.springframework.jdbc.datasource.DataSourceUtils.doGetConnection(DataSourceUtils.java:118)
+	at org.springframework.jdbc.datasource.DataSourceUtils.getConnection(DataSourceUtils.java:81)
+	at org.springframework.jdbc.core.JdbcTemplate.execute(JdbcTemplate.java:342)
+	at org.springframework.boot.jdbc.EmbeddedDatabaseConnection.isEmbedded(EmbeddedDatabaseConnection.java:168)
+	at org.springframework.boot.jdbc.init.DataSourceScriptDatabaseInitializer.isEmbeddedDatabase(DataSourceScriptDatabaseInitializer.java:67)
+	at org.springframework.boot.sql.init.AbstractScriptDatabaseInitializer.isEnabled(AbstractScriptDatabaseInitializer.java:84)
+	at org.springframework.boot.sql.init.AbstractScriptDatabaseInitializer.applyScripts(AbstractScriptDatabaseInitializer.java:107)
+	at org.springframework.boot.sql.init.AbstractScriptDatabaseInitializer.applySchemaScripts(AbstractScriptDatabaseInitializer.java:98)
+	at org.springframework.boot.sql.init.AbstractScriptDatabaseInitializer.initializeDatabase(AbstractScriptDatabaseInitializer.java:76)
+	at org.springframework.boot.sql.init.AbstractScriptDatabaseInitializer.afterPropertiesSet(AbstractScriptDatabaseInitializer.java:66)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1853)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1802)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:600)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:313)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:205)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:954)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:625)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:335)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1363)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1352)
+	at com.example.codingpractice.CodingpracticeApplication.main(CodingpracticeApplication.java:10)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientException: General error: "org.h2.mvstore.MVStoreException: The file is locked: D:/nxtWave/codingpractice/codingpractice/src/main.mv.db [2.2.224/7]" [50000-224]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:566)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	... 52 more
+Caused by: org.h2.mvstore.MVStoreException: The file is locked: D:/nxtWave/codingpractice/codingpractice/src/main.mv.db [2.2.224/7]
+	at org.h2.mvstore.DataUtils.newMVStoreException(DataUtils.java:996)
+	at org.h2.mvstore.SingleFileStore.lockFileChannel(SingleFileStore.java:143)
+	at org.h2.mvstore.SingleFileStore.open(SingleFileStore.java:117)
+	at org.h2.mvstore.SingleFileStore.open(SingleFileStore.java:81)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:286)
+	... 46 more
+2024-07-26 12:02:39.429173+05:30 database: flush
+org.h2.message.DbException: General error: "org.h2.mvstore.MVStoreException: The file is locked: D:/nxtWave/codingpractice/codingpractice/src/main.mv.db [2.2.224/7]" [50000-224]
+	at org.h2.message.DbException.get(DbException.java:212)
+	at org.h2.message.DbException.convert(DbException.java:407)
+	at org.h2.mvstore.db.Store.lambda$new$0(Store.java:122)
+	at org.h2.mvstore.MVStore.handleException(MVStore.java:1546)
+	at org.h2.mvstore.MVStore.panic(MVStore.java:371)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:291)
+	at org.h2.mvstore.MVStore$Builder.open(MVStore.java:2035)
+	at org.h2.mvstore.db.Store.<init>(Store.java:133)
+	at org.h2.engine.Database.<init>(Database.java:326)
+	at org.h2.engine.Engine.openSession(Engine.java:92)
+	at org.h2.engine.Engine.openSession(Engine.java:222)
+	at org.h2.engine.Engine.createSession(Engine.java:201)
+	at org.h2.engine.SessionRemote.connectEmbeddedOrServer(SessionRemote.java:343)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:125)
+	at org.h2.Driver.connect(Driver.java:59)
+	at com.zaxxer.hikari.util.DriverDataSource.getConnection(DriverDataSource.java:120)
+	at com.zaxxer.hikari.pool.PoolBase.newConnection(PoolBase.java:360)
+	at com.zaxxer.hikari.pool.PoolBase.newPoolEntry(PoolBase.java:202)
+	at com.zaxxer.hikari.pool.HikariPool.createPoolEntry(HikariPool.java:461)
+	at com.zaxxer.hikari.pool.HikariPool.checkFailFast(HikariPool.java:550)
+	at com.zaxxer.hikari.pool.HikariPool.<init>(HikariPool.java:98)
+	at com.zaxxer.hikari.HikariDataSource.getConnection(HikariDataSource.java:111)
+	at org.springframework.jdbc.datasource.DataSourceUtils.fetchConnection(DataSourceUtils.java:160)
+	at org.springframework.jdbc.datasource.DataSourceUtils.doGetConnection(DataSourceUtils.java:118)
+	at org.springframework.jdbc.datasource.DataSourceUtils.getConnection(DataSourceUtils.java:81)
+	at org.springframework.jdbc.core.JdbcTemplate.execute(JdbcTemplate.java:342)
+	at org.springframework.boot.jdbc.EmbeddedDatabaseConnection.isEmbedded(EmbeddedDatabaseConnection.java:168)
+	at org.springframework.boot.jdbc.init.DataSourceScriptDatabaseInitializer.isEmbeddedDatabase(DataSourceScriptDatabaseInitializer.java:67)
+	at org.springframework.boot.sql.init.AbstractScriptDatabaseInitializer.isEnabled(AbstractScriptDatabaseInitializer.java:84)
+	at org.springframework.boot.sql.init.AbstractScriptDatabaseInitializer.applyScripts(AbstractScriptDatabaseInitializer.java:107)
+	at org.springframework.boot.sql.init.AbstractScriptDatabaseInitializer.applyDataScripts(AbstractScriptDatabaseInitializer.java:102)
+	at org.springframework.boot.sql.init.AbstractScriptDatabaseInitializer.initializeDatabase(AbstractScriptDatabaseInitializer.java:77)
+	at org.springframework.boot.sql.init.AbstractScriptDatabaseInitializer.afterPropertiesSet(AbstractScriptDatabaseInitializer.java:66)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1853)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1802)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:600)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:313)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:205)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:954)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:625)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:335)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1363)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1352)
+	at com.example.codingpractice.CodingpracticeApplication.main(CodingpracticeApplication.java:10)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientException: General error: "org.h2.mvstore.MVStoreException: The file is locked: D:/nxtWave/codingpractice/codingpractice/src/main.mv.db [2.2.224/7]" [50000-224]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:566)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	... 52 more
+Caused by: org.h2.mvstore.MVStoreException: The file is locked: D:/nxtWave/codingpractice/codingpractice/src/main.mv.db [2.2.224/7]
+	at org.h2.mvstore.DataUtils.newMVStoreException(DataUtils.java:996)
+	at org.h2.mvstore.SingleFileStore.lockFileChannel(SingleFileStore.java:143)
+	at org.h2.mvstore.SingleFileStore.open(SingleFileStore.java:117)
+	at org.h2.mvstore.SingleFileStore.open(SingleFileStore.java:81)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:286)
+	... 46 more
+2024-07-26 12:02:40.490999+05:30 database: flush
+org.h2.message.DbException: General error: "org.h2.mvstore.MVStoreException: The file is locked: D:/nxtWave/codingpractice/codingpractice/src/main.mv.db [2.2.224/7]" [50000-224]
+	at org.h2.message.DbException.get(DbException.java:212)
+	at org.h2.message.DbException.convert(DbException.java:407)
+	at org.h2.mvstore.db.Store.lambda$new$0(Store.java:122)
+	at org.h2.mvstore.MVStore.handleException(MVStore.java:1546)
+	at org.h2.mvstore.MVStore.panic(MVStore.java:371)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:291)
+	at org.h2.mvstore.MVStore$Builder.open(MVStore.java:2035)
+	at org.h2.mvstore.db.Store.<init>(Store.java:133)
+	at org.h2.engine.Database.<init>(Database.java:326)
+	at org.h2.engine.Engine.openSession(Engine.java:92)
+	at org.h2.engine.Engine.openSession(Engine.java:222)
+	at org.h2.engine.Engine.createSession(Engine.java:201)
+	at org.h2.engine.SessionRemote.connectEmbeddedOrServer(SessionRemote.java:343)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:125)
+	at org.h2.Driver.connect(Driver.java:59)
+	at com.zaxxer.hikari.util.DriverDataSource.getConnection(DriverDataSource.java:120)
+	at com.zaxxer.hikari.pool.PoolBase.newConnection(PoolBase.java:360)
+	at com.zaxxer.hikari.pool.PoolBase.newPoolEntry(PoolBase.java:202)
+	at com.zaxxer.hikari.pool.HikariPool.createPoolEntry(HikariPool.java:461)
+	at com.zaxxer.hikari.pool.HikariPool.checkFailFast(HikariPool.java:550)
+	at com.zaxxer.hikari.pool.HikariPool.<init>(HikariPool.java:98)
+	at com.zaxxer.hikari.HikariDataSource.getConnection(HikariDataSource.java:111)
+	at org.springframework.jdbc.datasource.DataSourceUtils.fetchConnection(DataSourceUtils.java:160)
+	at org.springframework.jdbc.datasource.DataSourceUtils.doGetConnection(DataSourceUtils.java:118)
+	at org.springframework.jdbc.datasource.DataSourceUtils.getConnection(DataSourceUtils.java:81)
+	at org.springframework.jdbc.core.JdbcTemplate.execute(JdbcTemplate.java:342)
+	at org.springframework.boot.jdbc.EmbeddedDatabaseConnection.isEmbedded(EmbeddedDatabaseConnection.java:168)
+	at org.springframework.boot.autoconfigure.orm.jpa.HibernateDefaultDdlAutoProvider.getDefaultDdlAuto(HibernateDefaultDdlAutoProvider.java:42)
+	at org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaConfiguration.lambda$getVendorProperties$1(HibernateJpaConfiguration.java:142)
+	at org.springframework.boot.autoconfigure.orm.jpa.HibernateSettings.getDdlAuto(HibernateSettings.java:41)
+	at org.springframework.boot.autoconfigure.orm.jpa.HibernateProperties.determineDdlAuto(HibernateProperties.java:118)
+	at org.springframework.boot.autoconfigure.orm.jpa.HibernateProperties.getAdditionalProperties(HibernateProperties.java:87)
+	at org.springframework.boot.autoconfigure.orm.jpa.HibernateProperties.determineHibernateProperties(HibernateProperties.java:80)
+	at org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaConfiguration.getVendorProperties(HibernateJpaConfiguration.java:143)
+	at org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration.entityManagerFactory(JpaBaseConfiguration.java:134)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:146)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:644)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:636)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1355)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1185)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:562)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:205)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:954)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:625)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:335)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1363)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1352)
+	at com.example.codingpractice.CodingpracticeApplication.main(CodingpracticeApplication.java:10)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientException: General error: "org.h2.mvstore.MVStoreException: The file is locked: D:/nxtWave/codingpractice/codingpractice/src/main.mv.db [2.2.224/7]" [50000-224]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:566)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	... 57 more
+Caused by: org.h2.mvstore.MVStoreException: The file is locked: D:/nxtWave/codingpractice/codingpractice/src/main.mv.db [2.2.224/7]
+	at org.h2.mvstore.DataUtils.newMVStoreException(DataUtils.java:996)
+	at org.h2.mvstore.SingleFileStore.lockFileChannel(SingleFileStore.java:143)
+	at org.h2.mvstore.SingleFileStore.open(SingleFileStore.java:117)
+	at org.h2.mvstore.SingleFileStore.open(SingleFileStore.java:81)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:286)
+	... 51 more
+2024-07-26 12:02:41.976881+05:30 database: flush
+org.h2.message.DbException: General error: "org.h2.mvstore.MVStoreException: The file is locked: D:/nxtWave/codingpractice/codingpractice/src/main.mv.db [2.2.224/7]" [50000-224]
+	at org.h2.message.DbException.get(DbException.java:212)
+	at org.h2.message.DbException.convert(DbException.java:407)
+	at org.h2.mvstore.db.Store.lambda$new$0(Store.java:122)
+	at org.h2.mvstore.MVStore.handleException(MVStore.java:1546)
+	at org.h2.mvstore.MVStore.panic(MVStore.java:371)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:291)
+	at org.h2.mvstore.MVStore$Builder.open(MVStore.java:2035)
+	at org.h2.mvstore.db.Store.<init>(Store.java:133)
+	at org.h2.engine.Database.<init>(Database.java:326)
+	at org.h2.engine.Engine.openSession(Engine.java:92)
+	at org.h2.engine.Engine.openSession(Engine.java:222)
+	at org.h2.engine.Engine.createSession(Engine.java:201)
+	at org.h2.engine.SessionRemote.connectEmbeddedOrServer(SessionRemote.java:343)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:125)
+	at org.h2.Driver.connect(Driver.java:59)
+	at com.zaxxer.hikari.util.DriverDataSource.getConnection(DriverDataSource.java:120)
+	at com.zaxxer.hikari.pool.PoolBase.newConnection(PoolBase.java:360)
+	at com.zaxxer.hikari.pool.PoolBase.newPoolEntry(PoolBase.java:202)
+	at com.zaxxer.hikari.pool.HikariPool.createPoolEntry(HikariPool.java:461)
+	at com.zaxxer.hikari.pool.HikariPool.checkFailFast(HikariPool.java:550)
+	at com.zaxxer.hikari.pool.HikariPool.<init>(HikariPool.java:98)
+	at com.zaxxer.hikari.HikariDataSource.getConnection(HikariDataSource.java:111)
+	at org.hibernate.engine.jdbc.connections.internal.DatasourceConnectionProviderImpl.getConnection(DatasourceConnectionProviderImpl.java:122)
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess.obtainConnection(JdbcEnvironmentInitiator.java:437)
+	at org.hibernate.resource.transaction.backend.jdbc.internal.JdbcIsolationDelegate.delegateWork(JdbcIsolationDelegate.java:61)
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.getJdbcEnvironmentUsingJdbcMetadata(JdbcEnvironmentInitiator.java:290)
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:123)
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:77)
+	at org.hibernate.boot.registry.internal.StandardServiceRegistryImpl.initiateService(StandardServiceRegistryImpl.java:130)
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.createService(AbstractServiceRegistryImpl.java:263)
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.initializeService(AbstractServiceRegistryImpl.java:238)
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.getService(AbstractServiceRegistryImpl.java:215)
+	at org.hibernate.boot.model.relational.Database.<init>(Database.java:45)
+	at org.hibernate.boot.internal.InFlightMetadataCollectorImpl.getDatabase(InFlightMetadataCollectorImpl.java:221)
+	at org.hibernate.boot.internal.InFlightMetadataCollectorImpl.<init>(InFlightMetadataCollectorImpl.java:189)
+	at org.hibernate.boot.model.process.spi.MetadataBuildingProcess.complete(MetadataBuildingProcess.java:171)
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.metadata(EntityManagerFactoryBuilderImpl.java:1431)
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1502)
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:75)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:390)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:409)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:396)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:366)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1853)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1802)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:600)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:205)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:954)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:625)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:335)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1363)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1352)
+	at com.example.codingpractice.CodingpracticeApplication.main(CodingpracticeApplication.java:10)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientException: General error: "org.h2.mvstore.MVStoreException: The file is locked: D:/nxtWave/codingpractice/codingpractice/src/main.mv.db [2.2.224/7]" [50000-224]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:566)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	... 60 more
+Caused by: org.h2.mvstore.MVStoreException: The file is locked: D:/nxtWave/codingpractice/codingpractice/src/main.mv.db [2.2.224/7]
+	at org.h2.mvstore.DataUtils.newMVStoreException(DataUtils.java:996)
+	at org.h2.mvstore.SingleFileStore.lockFileChannel(SingleFileStore.java:143)
+	at org.h2.mvstore.SingleFileStore.open(SingleFileStore.java:117)
+	at org.h2.mvstore.SingleFileStore.open(SingleFileStore.java:81)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:286)
+	... 54 more
+2024-07-29 11:15:04.949461+05:30 jdbc[14]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "ALTER TABLE [*]user ADD CONSTRAINT mob_num UNIQUE (mobile_number)"; expected "identifier"; SQL statement:
+ALTER TABLE user ADD CONSTRAINT mob_num UNIQUE (mobile_number) [42001-224]
+2024-07-29 11:15:17.566758+05:30 jdbc[14]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "ALTER TABLE [*]user ADD CONSTRAINT mob_num UNIQUE (mob_num)"; expected "identifier"; SQL statement:
+ALTER TABLE user ADD CONSTRAINT mob_num UNIQUE (mob_num) [42001-224]
+2024-07-29 11:18:01.430484+05:30 jdbc[14]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "ALTER TABLE [*]user ADD CONSTRAINT unique_mob_num UNIQUE (mob_num)"; expected "identifier"; SQL statement:
+ALTER TABLE user ADD CONSTRAINT unique_mob_num UNIQUE (mob_num) [42001-224]
+2024-07-29 11:26:14.630539+05:30 jdbc[14]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "INSERT INTO users (FULL_NAME, MOB_NUM, PAN_NUM, MANAGER_ID, IS_ACTIVE) VALUES\000d\000a('Alex Johnson', '9876543210', 'AJX1234567', 4[*]aa198b1-8749-413b-9405-f005754e2362, true),\000d\000a('Alice Smith', '9988776655', 'ALC2345678', 02dd0fff-00a4-4884-9955-667d42e9d5f7, true),\000d\000a('Tom Hardy', '9112233445', 'THR3456789', 4aa198b1-8749-413b-9405-f005754e2362, false),\000d\000a('Emma Watson', '9223344556', 'EWT4567890', 02dd0fff-00a4-4884-9955-667d42e9d5f7, true),\000d\000a('Chris Evans', '9445566778', 'CEV5678901', 4aa198b1-8749-413b-9405-f005754e2362, true),\000d\000a('Scarlett Johansson', '9001122334', 'SJO6789012', NULL, false),\000d\000a('Ryan Reynolds', '9999888877', 'RRN7890123', NULL, true),\000d\000a('Natalie Portman', '9777888899', 'NPO8901234', NULL, true),\000d\000a('Leonardo DiCaprio', '8888777766', 'LDI9012345', NULL, true),\000d\000a('Jennifer Lawrence', '9777665544', 'JLO0123456', NULL, false)"; expected "[, ., ::, AT, FORMAT, *, /, %, +, -, ||, NOT, IS, ILIKE, REGEXP, AND, OR, ,, )"; SQL statement:
+INSERT INTO users (FULL_NAME, MOB_NUM, PAN_NUM, MANAGER_ID, IS_ACTIVE) VALUES
+('Alex Johnson', '9876543210', 'AJX1234567', 4aa198b1-8749-413b-9405-f005754e2362, true),
+('Alice Smith', '9988776655', 'ALC2345678', 02dd0fff-00a4-4884-9955-667d42e9d5f7, true),
+('Tom Hardy', '9112233445', 'THR3456789', 4aa198b1-8749-413b-9405-f005754e2362, false),
+('Emma Watson', '9223344556', 'EWT4567890', 02dd0fff-00a4-4884-9955-667d42e9d5f7, true),
+('Chris Evans', '9445566778', 'CEV5678901', 4aa198b1-8749-413b-9405-f005754e2362, true),
+('Scarlett Johansson', '9001122334', 'SJO6789012', NULL, false),
+('Ryan Reynolds', '9999888877', 'RRN7890123', NULL, true),
+('Natalie Portman', '9777888899', 'NPO8901234', NULL, true),
+('Leonardo DiCaprio', '8888777766', 'LDI9012345', NULL, true),
+('Jennifer Lawrence', '9777665544', 'JLO0123456', NULL, false) [42001-224]
+2024-07-29 11:27:05.745771+05:30 jdbc[14]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "INSERT INTO users (FULL_NAME, MOB_NUM, PAN_NUM, MANAGER_ID, IS_ACTIVE) VALUES\000d\000a('Alex Johnson', '9876543210', 'AJX1234567', 4[*]aa198b1-8749-413b-9405-f005754e2362, true),\000d\000a('Alice Smith', '9988776655', 'ALC2345678', 02dd0fff-00a4-4884-9955-667d42e9d5f7, true),\000d\000a('Tom Hardy', '9112233445', 'THR3456789', 4aa198b1-8749-413b-9405-f005754e2362, false),\000d\000a('Emma Watson', '9223344556', 'EWT4567890', 02dd0fff-00a4-4884-9955-667d42e9d5f7, true),\000d\000a('Chris Evans', '9445566778', 'CEV5678901', 4aa198b1-8749-413b-9405-f005754e2362, true),\000d\000a('Scarlett Johansson', '9001122334', 'SJO6789012', NULL, false),\000d\000a('Ryan Reynolds', '9999888877', 'RRN7890123', NULL, true),\000d\000a('Natalie Portman', '9777888899', 'NPO8901234', NULL, true),\000d\000a('Leonardo DiCaprio', '8888777766', 'LDI9012345', NULL, true),\000d\000a('Jennifer Lawrence', '9777665544', 'JLO0123456', NULL, false)"; expected "[, ., ::, AT, FORMAT, *, /, %, +, -, ||, NOT, IS, ILIKE, REGEXP, AND, OR, ,, )"; SQL statement:
+INSERT INTO users (FULL_NAME, MOB_NUM, PAN_NUM, MANAGER_ID, IS_ACTIVE) VALUES
+('Alex Johnson', '9876543210', 'AJX1234567', 4aa198b1-8749-413b-9405-f005754e2362, true),
+('Alice Smith', '9988776655', 'ALC2345678', 02dd0fff-00a4-4884-9955-667d42e9d5f7, true),
+('Tom Hardy', '9112233445', 'THR3456789', 4aa198b1-8749-413b-9405-f005754e2362, false),
+('Emma Watson', '9223344556', 'EWT4567890', 02dd0fff-00a4-4884-9955-667d42e9d5f7, true),
+('Chris Evans', '9445566778', 'CEV5678901', 4aa198b1-8749-413b-9405-f005754e2362, true),
+('Scarlett Johansson', '9001122334', 'SJO6789012', NULL, false),
+('Ryan Reynolds', '9999888877', 'RRN7890123', NULL, true),
+('Natalie Portman', '9777888899', 'NPO8901234', NULL, true),
+('Leonardo DiCaprio', '8888777766', 'LDI9012345', NULL, true),
+('Jennifer Lawrence', '9777665544', 'JLO0123456', NULL, false) [42001-224]
+2024-07-29 11:27:54.019277+05:30 jdbc[14]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "INSERT INTO users (FULL_NAME, MOB_NUM, PAN_NUM, MANAGER_ID, IS_ACTIVE) VALUES\000d\000a('Alex Johnson', '9876543210', 'AJX1234567', 4[*]aa198b1-8749-413b-9405-f005754e2362, true),\000d\000a('Alice Smith', '9988776655', 'ALC2345678', 02dd0fff-00a4-4884-9955-667d42e9d5f7, true),\000d\000a('Tom Hardy', '9112233445', 'THR3456789', 4aa198b1-8749-413b-9405-f005754e2362, false),\000d\000a('Emma Watson', '9223344556', 'EWT4567890', 02dd0fff-00a4-4884-9955-667d42e9d5f7, true),\000d\000a('Chris Evans', '9445566778', 'CEV5678901', 4aa198b1-8749-413b-9405-f005754e2362, true),"; expected "[, ., ::, AT, FORMAT, *, /, %, +, -, ||, NOT, IS, ILIKE, REGEXP, AND, OR, ,, )"; SQL statement:
+INSERT INTO users (FULL_NAME, MOB_NUM, PAN_NUM, MANAGER_ID, IS_ACTIVE) VALUES
+('Alex Johnson', '9876543210', 'AJX1234567', 4aa198b1-8749-413b-9405-f005754e2362, true),
+('Alice Smith', '9988776655', 'ALC2345678', 02dd0fff-00a4-4884-9955-667d42e9d5f7, true),
+('Tom Hardy', '9112233445', 'THR3456789', 4aa198b1-8749-413b-9405-f005754e2362, false),
+('Emma Watson', '9223344556', 'EWT4567890', 02dd0fff-00a4-4884-9955-667d42e9d5f7, true),
+('Chris Evans', '9445566778', 'CEV5678901', 4aa198b1-8749-413b-9405-f005754e2362, true), [42001-224]
+2024-07-29 11:28:01.523731+05:30 jdbc[14]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "INSERT INTO users (FULL_NAME, MOB_NUM, PAN_NUM, MANAGER_ID, IS_ACTIVE) VALUES\000d\000a('Alex Johnson', '9876543210', 'AJX1234567', 4[*]aa198b1-8749-413b-9405-f005754e2362, true),"; expected "[, ., ::, AT, FORMAT, *, /, %, +, -, ||, NOT, IS, ILIKE, REGEXP, AND, OR, ,, )"; SQL statement:
+INSERT INTO users (FULL_NAME, MOB_NUM, PAN_NUM, MANAGER_ID, IS_ACTIVE) VALUES
+('Alex Johnson', '9876543210', 'AJX1234567', 4aa198b1-8749-413b-9405-f005754e2362, true), [42001-224]
+2024-07-29 11:28:35.696935+05:30 jdbc[14]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "INSERT INTO users (FULL_NAME, MOB_NUM, PAN_NUM, MANAGER_ID, IS_ACTIVE) VALUES\000d\000a('Alex Johnson', '9876543210', 'AJX1234567', 4[*]aa198b1-8749-413b-9405-f005754e2362, true)"; expected "[, ., ::, AT, FORMAT, *, /, %, +, -, ||, NOT, IS, ILIKE, REGEXP, AND, OR, ,, )"; SQL statement:
+INSERT INTO users (FULL_NAME, MOB_NUM, PAN_NUM, MANAGER_ID, IS_ACTIVE) VALUES
+('Alex Johnson', '9876543210', 'AJX1234567', 4aa198b1-8749-413b-9405-f005754e2362, true) [42001-224]
+2024-07-29 11:29:11.291520+05:30 jdbc[14]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "INSERT INTO [*]user (FULL_NAME, MOB_NUM, PAN_NUM, MANAGER_ID, IS_ACTIVE) VALUES\000d\000a('Alex Johnson', '9876543210', 'AJX1234567', '4aa198b1-8749-413b-9405-f005754e2362', TRUE),\000d\000a('Alice Smith', '9988776655', 'ALC2345678', '02dd0fff-00a4-4884-9955-667d42e9d5f7', TRUE),\000d\000a('Tom Hardy', '9112233445', 'THR3456789', '4aa198b1-8749-413b-9405-f005754e2362', FALSE),\000d\000a('Emma Watson', '9223344556', 'EWT4567890', '02dd0fff-00a4-4884-9955-667d42e9d5f7', TRUE),\000d\000a('Chris Evans', '9445566778', 'CEV5678901', '4aa198b1-8749-413b-9405-f005754e2362', TRUE),\000d\000a('Scarlett Johansson', '9001122334', 'SJO6789012', NULL, FALSE),\000d\000a('Ryan Reynolds', '9999888877', 'RRN7890123', NULL, TRUE),\000d\000a('Natalie Portman', '9777888899', 'NPO8901234', NULL, TRUE),\000d\000a('Leonardo DiCaprio', '8888777766', 'LDI9012345', NULL, TRUE),\000d\000a('Jennifer Lawrence', '9777665544', 'JLO0123456', NULL, FALSE)"; expected "identifier"; SQL statement:
+INSERT INTO user (FULL_NAME, MOB_NUM, PAN_NUM, MANAGER_ID, IS_ACTIVE) VALUES
+('Alex Johnson', '9876543210', 'AJX1234567', '4aa198b1-8749-413b-9405-f005754e2362', TRUE),
+('Alice Smith', '9988776655', 'ALC2345678', '02dd0fff-00a4-4884-9955-667d42e9d5f7', TRUE),
+('Tom Hardy', '9112233445', 'THR3456789', '4aa198b1-8749-413b-9405-f005754e2362', FALSE),
+('Emma Watson', '9223344556', 'EWT4567890', '02dd0fff-00a4-4884-9955-667d42e9d5f7', TRUE),
+('Chris Evans', '9445566778', 'CEV5678901', '4aa198b1-8749-413b-9405-f005754e2362', TRUE),
+('Scarlett Johansson', '9001122334', 'SJO6789012', NULL, FALSE),
+('Ryan Reynolds', '9999888877', 'RRN7890123', NULL, TRUE),
+('Natalie Portman', '9777888899', 'NPO8901234', NULL, TRUE),
+('Leonardo DiCaprio', '8888777766', 'LDI9012345', NULL, TRUE),
+('Jennifer Lawrence', '9777665544', 'JLO0123456', NULL, FALSE) [42001-224]

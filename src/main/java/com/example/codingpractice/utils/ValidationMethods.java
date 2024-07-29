@@ -1,51 +1,113 @@
 package com.example.codingpractice.utils;
 
+import com.example.codingpractice.model.Manager;
 import com.example.codingpractice.model.User;
+import com.example.codingpractice.repository.ManagerJpaRepository;
+import com.example.codingpractice.repository.UserJpaRepository;
+import com.example.codingpractice.service.UserJpaService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
+import org.springframework.stereotype.Component;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.util.Objects;
+import java.util.UUID;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+
+@Component
 public class ValidationMethods {
+    @Autowired
+    UserJpaRepository userJpaRepository;
 
-    public static boolean validateUser(User user) {
+    @Autowired
+    ManagerJpaRepository managerJpaRepository;
 
-        if (user.getFull_name() == null) {
-            return false;
+    private static final Logger logger = LoggerFactory.getLogger(UserJpaService.class);
+
+    public boolean validateUser(User user) {
+
+        if (Objects.equals(user.getFullName(), "")) {
+            logger.info("Username is empty");
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Full name must not be empty.");
+
         }
-        else if (adjustMobileNumber(user, user.getMob_num()) == null) {
-            return false;
+        if (adjustMobileNumber(user, user.getMobNo()) == null) {
+            logger.info("Mobile No. is empty");
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Invalid mobile number.");
         }
 
-        else return validateAndFormatPAN(user.getPan_num()) != null;
+        if (!validateAndFormatPAN(user)) {
+            logger.info("PanCard is empty");
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Invalid PAN number format.");
+        }
 
+        if (!validateManagerId(user)) {
+            logger.info("Manager Id is empty");
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Invalid manager ID.");
+        }
 
+     return  true;
 
     }
 
-    public static String adjustMobileNumber(User user, String mobileNumber) {
+    public String adjustMobileNumber(User user, String mobileNumber) {
+
         String numericMobNum = mobileNumber.replaceAll("[^\\d]", "");
+        logger.info("Mobile No. {}", numericMobNum);
+
+        User existingUser = userJpaRepository.findByMobNo(mobileNumber);
+        if (existingUser != null) {
+            String existingMobileNumber = existingUser.getMobNo();
+            if (existingMobileNumber != null) {
+                throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Mobile number already registered");
+            }
+        }
+
 
         if (numericMobNum.startsWith("0")) {
-             user.setMob_num("+91" + numericMobNum.substring(1));
-             return user.getMob_num();
-        } else if (numericMobNum.startsWith("+91")) {
-            return  numericMobNum;
-        }  else if (numericMobNum.startsWith("+91") && numericMobNum.length() > 10) {
+             numericMobNum = numericMobNum.substring(1);
+        } else if (numericMobNum.startsWith("91") && numericMobNum.length() == 12) {
+           numericMobNum = numericMobNum.substring(2);
+        }
+         else if (numericMobNum.length() != 10) {
             return null;
         }
-        else {
-            user.setMob_num(user.getMob_num());
-            return mobileNumber;
-        }
+        user.setMobNo(numericMobNum);
+        return numericMobNum;
     }
 
-    public static String validateAndFormatPAN(String pan)  {
-        pan = pan.replaceAll("\\s", "");
-        pan = pan.toUpperCase();
-        if (!pan.matches("[A-Z]{5}[0-9]{4}[A-Z]")) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "PAN Number Should Follow Format: ABCDE1234F");
+    public  boolean validateAndFormatPAN(User user)  {
+        if (!user.getPanNum().toUpperCase().matches("[A-Z]{5}[0-9]{4}[A-Z]")) {
+            return false;
+        }
+        user.setPanNum(user.getPanNum().toUpperCase());
+        return true;
+    }
+
+    public boolean validateManagerId(User user) {
+        logger.info("Manager id {}", user.getManagerId());
+        if (user.getManagerId() == null) {
+           return true;
+       }
+
+        try {
+            logger.info("try block");
+            Manager manager = managerJpaRepository.findByManagerId(user.getManagerId());
+            logger.info("Manager {}", manager.getFullName());
+            if (manager != null) {
+                return true;
+            } else {
+                throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+            }
+
+        } catch (Exception e) {
+            logger.info("catch block");
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
         }
 
-        return pan;
     }
 }

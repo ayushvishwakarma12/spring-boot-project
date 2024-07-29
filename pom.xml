@@ -59,7 +59,14 @@
             <version>RELEASE</version>
             <scope>compile</scope>
         </dependency>
+		<!-- Spring Boot Starter for logging (includes SLF4J and Logback) -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter</artifactId>
+		</dependency>
+
     </dependencies>
+
 
 	<build>
 		<plugins>

@@ -1,87 +1,140 @@
 package com.example.codingpractice.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import jakarta.persistence.*;
 
+import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Entity
 @Table(name = "users")
+@JsonPropertyOrder({
+        "user_id",
+        "manager_id",
+        "full_name",
+        "mob_num",
+        "pan_num",
+        "created_at",
+        "updated_at",
+        "is_active"
+})
 public class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private UUID user_id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id")
+    @JsonProperty("user_id")
+    private UUID userId;
 
     @Column(name = "full_name")
-    private String full_name;
+    @JsonProperty("full_name")
+    private String fullName;
 
     @Column(name = "mob_num")
-    private String mob_num;
+    @JsonProperty("mob_num")
+    private String mobNo;
 
     @Column(name = "pan_num")
-    private String pan_num;
+    @JsonProperty("pan_num")
+    private String panNum;
 
     @ManyToOne
-    @JoinColumn(name = "manager_id", referencedColumnName = "manager_id")
-    private Manager manager_id;
-    private boolean is_active;
+    @JoinColumn(name = "manager_id", insertable = false, updatable = false)
+    private Manager manager;
+
+    @Column(name = "manager_id")
+    @JsonProperty("manager_id")
+    private UUID managerId;
+
+    @Column(name = "is_active")
+    @JsonProperty("is_active")
+    private boolean isActive;
+
+    @Column(name = "created_at", updatable = false)
+    @JsonProperty("created_at")
+    private LocalDateTime createdAt;
+
+    @Column(name = "updated_at")
+    @JsonProperty("updated_at")
+    private LocalDateTime updatedAt;
+
 
     public User() {
 
     }
 
-    public User(UUID user_id, String full_name, String mob_num, String pan_num, int manager_id, boolean is_active) {
-        this.user_id = user_id;
-        this.full_name = full_name;
-        this.mob_num = mob_num;
-        this.pan_num = pan_num;
-        this.is_active = is_active;
+    public User(UUID userId, String fullName, String mobNo, String panNum, int managerId, boolean isActive, LocalDateTime createdAt, LocalDateTime updatedAt) {
+        this.userId = userId;
+        this.fullName = fullName;
+        this.mobNo = mobNo;
+        this.panNum = panNum;
+        this.isActive = isActive;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
     }
 
-    public UUID getUser_id() {
-        return user_id;
+    public UUID getUserId() {
+        return userId;
     }
 
-    public void setUser_id(UUID user_id) {
-        this.user_id = user_id;
+    public void setUserId(UUID userId) {
+        this.userId = userId;
     }
 
-    public String getFull_name() {
-        return full_name;
+    public String getFullName() {
+        return fullName;
     }
 
-    public void setFull_name(String full_name) {
-        this.full_name = full_name;
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
     }
 
-    public String getMob_num() {
-        return mob_num;
+    public String getMobNo() {
+        return mobNo;
     }
 
-    public void setMob_num(String mob_num) {
-        this.mob_num = mob_num;
+    public void setMobNo(String mobNo) {
+        this.mobNo = mobNo;
     }
 
-    public String getPan_num() {
-        return pan_num;
+    public String getPanNum() {
+        return panNum;
     }
 
-    public void setPan_num(String pan_num) {
-        this.pan_num = pan_num;
+    public void setPanNum(String panNum) {
+        this.panNum = panNum;
     }
 
-    public Manager getManager_id() {
-        return manager_id;
+    public UUID getManagerId() {
+        return managerId;
     }
 
-    public void setManager_id(Manager manager_id) {
-        this.manager_id = manager_id;
+    public void setManagerId(UUID managerId) {
+        this.managerId = managerId;
     }
 
-    public boolean isIs_active() {
-        return is_active;
+    public boolean getIsActive() {
+        return isActive;
     }
 
-    public void setIs_active(boolean is_active) {
-        this.is_active = is_active;
+    public void setIsActive(boolean isActive) {
+        this.isActive = isActive;
     }
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public LocalDateTime getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(LocalDateTime updatedAt) {
+        this.updatedAt = updatedAt;
+    }
+
 }
